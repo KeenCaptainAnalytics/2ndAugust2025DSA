@@ -23,34 +23,43 @@ public class NQueen {
         return true;
 
     }
-    static boolean helper(int board[][] , int q){
+    static void helper(int board[][] , int q){
         int row = q;
+        System.out.println(row);
         if(row  == board.length){
-            return true;
+            print(board);
+            System.out.println("==========================");
+            return;
+            // return true;
         }
 
         for(int i =0;i< board.length;i++){
             if(checkConstraint(board, row, i)== true){
                 board[row][i] = 1;
                 
-                if(helper(board , q+1)==false){
-                    // false
-                     board[row][i] = 0;
-                }
-                else{
-                    return true;
-                }
+                // all possibilities
+                helper(board, q+1);
+                board[row][i] = 0;
+
+                // single output
+                // if(helper(board , q+1)==false){
+                //     // false
+                //      board[row][i] = 0;
+                // }
+                // else{
+                //     return true;
+                // }
             }
         }
 
-        return false;
+        // return false;
     }
     public static void main(String[] args) {
         int n =4;
         int board[][] = new int[n][n];
-        boolean  result = helper(board, 0);
+        helper(board, 0);
 
-        print(board);
+        // print(board);
 // print all the possibilities 
     }
 
