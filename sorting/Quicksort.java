@@ -8,22 +8,11 @@ public class Quicksort {
         int i=lo;
         int j = hi-1;
 
-        if(i==j){
-            if(arr[i]<arr[hi]){
-                int temp = arr[i];
-                arr[i] = arr[hi];
-                arr[hi]= temp; 
-                return i;
-            }
-            else{
-                return hi;
-            }
-        }
-        while(i<j){
+        while(i<=j){
             while(i<hi && arr[i]<= pivotEle){
                 i++;
             }
-            while(j>=0 && arr[j]>pivotEle ){
+            while(j>=lo && arr[j]>pivotEle ){
                 j--;
             }
             if(i<j){
@@ -31,17 +20,17 @@ public class Quicksort {
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
-            else if(j!=-1 && i>=j ){
+            else if( i>j ){
                 int temp = arr[hi];
                 arr[hi] = arr[i];
                 arr[i] = temp;
                 return i;
             }
-            else if(j ==-1){
+            else if(j ==lo-1){
                 int temp = arr[lo];
                 arr[lo] = arr[hi];
                 arr[hi] = temp;
-                
+                return lo;
             }
         }
 
